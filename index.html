@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>每日晨會紀錄</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <p class="eyebrow">2050x012S · 內部工作彙報</p>
+      <h1>每日晨會紀錄</h1>
+      <p>填寫昨日工作與會議重點，產生統一格式的 A4 單頁紀錄。</p>
+      <p id="draft-status" class="draft-status" role="status">草稿僅儲存在此瀏覽器</p>
+    </header>
+    <form id="meeting-form">
+      <section class="card" aria-labelledby="basic-heading">
+        <h2 id="basic-heading">基本資訊</h2>
+        <div class="basic-grid">
+          <label>會議日期 <input id="meeting-date" type="date" required></label>
+          <label>紀錄人 <select id="recorder" required><option value="">請選擇紀錄人</option></select></label>
+          <label class="topic-field">紀錄主題 <input id="meeting-topic" type="text" value="昨日工作內容、重點事項"></label>
+        </div>
+      </section>
+      <section class="card" aria-labelledby="work-heading">
+        <h2 id="work-heading">昨日工作內容</h2>
+        <p class="section-note">每人一欄，可用頓號分隔工作項目。勾選未出席後，原輸入內容仍會保留。</p>
+        <div id="members" class="members"></div>
+      </section>
+      <section class="card" aria-labelledby="highlights-heading">
+        <div class="section-heading"><h2 id="highlights-heading">重點事項</h2><button id="add-highlight" class="secondary" type="button">＋ 新增重點事項</button></div>
+        <p class="section-note">記錄共同事項、公告或新話題；完全空白的事項不會輸出。</p>
+        <div id="highlights"></div>
+      </section>
+      <div class="actions">
+        <p>A4 直式・固定單頁<br><span>內容過多時會提示精簡，不會截斷文字。</span></p>
+        <div class="action-buttons"><button id="preview-pdf" class="secondary" type="button">預覽 PDF</button><button id="download-pdf" class="primary" type="button">下載 PDF</button></div>
+      </div>
+      <p id="message" role="status" aria-live="polite"></p>
+      <p class="connection-note">PDF 功能需連線載入函式庫；表單內容只在本機瀏覽器處理。</p>
+    </form>
+  </main>
+  <dialog id="preview-dialog" aria-labelledby="preview-title">
+    <div class="preview-toolbar"><h2 id="preview-title">PDF 預覽</h2><div><button id="toggle-preview" class="secondary" type="button">查看整頁影像</button><button id="close-preview" class="secondary" type="button">關閉預覽</button></div></div>
+    <p class="preview-note">預覽與下載使用同一份 PDF。若瀏覽器無法內嵌顯示，可切換查看相同內容的整頁影像。</p>
+    <iframe id="pdf-frame" title="A4 單頁 PDF 預覽"></iframe>
+    <div id="image-preview" hidden><img id="pdf-image" alt="與 PDF 相同的完整 A4 頁面"></div>
+  </dialog>
+  <div id="render-host" aria-hidden="true"></div>
+</body>
+</html>
