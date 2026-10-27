@@ -1,0 +1,108 @@
+/* ===== 基本頁面 ===== */
+body {
+    font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-size: 12pt;
+    line-height: 1.7;
+    color: #2f3a45;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 36px 60px;
+}
+
+/* ===== 主標題 ===== */
+h1 {
+    font-size: 24pt;
+    color: #1f4e6d;
+    border-bottom: 3px solid #8fb8cf;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+/* ===== 二級標題 ===== */
+h2 {
+    font-size: 15pt;
+    color: #285f7d;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    border-left: 5px solid #8fb8cf;
+    padding-left: 10px;
+}
+
+/* ===== 引言 / 摘要 ===== */
+blockquote {
+    margin: 8px 0 16px;
+    padding: 7px 14px;
+    background: #f3f7fa;
+    border-left: 4px solid #8fb8cf;
+    color: #56616a;
+}
+
+/* ===== 表格 ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 24px;
+    font-size: 11.5pt;
+}
+
+th {
+    background: #e8f1f6;
+    color: #23495f;
+    font-weight: bold;
+}
+
+th,
+td {
+    border: 1px solid #c9d5dc;
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+tr:nth-child(even) td {
+    background: #fafcfd;
+}
+
+.footer {
+    position: fixed !important;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    text-align: center;
+    font-size: 10pt;
+    color: #7a8790;
+
+    padding: 6mm 0;
+    box-sizing: border-box;
+}
+
+/* ===== 一般段落 ===== */
+p {margin: 8px 0 14px;}
+
+/* ===== 分隔線 ===== */
+hr {border: none;
+    border-top: 1px solid #ccd6dc;
+    margin: 14px 0 12px;
+    display: none;}
+
+/* ===== 列印 / PDF ===== */
+@media print {
+    body {max-width: none;
+        padding: 0 0 20mm 0;}
+
+    .footer {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+}
+
+    h1,
+    h2 {page-break-after: avoid;}
+
+    table {page-break-inside: avoid;}
+}
+
+@page {margin: 8mm 12mm 12mm 12mm;}
